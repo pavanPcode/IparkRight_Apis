@@ -3,3 +3,4 @@ mysql-connector-python
 configparser
 requests
 pandas
+Flask-Cors
