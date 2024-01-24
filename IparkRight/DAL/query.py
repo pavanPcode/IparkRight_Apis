@@ -14,7 +14,7 @@ deleteTenentsQuary  = """update tenant set isactive = 0 where id = {0}"""
 
 ############################checkResident Number ExistOR Not
 
-checkResidentNoQuary = """ select id Residentid, SuperId,Mobile,name,flatno,blockno,alloted4w,alloted2w from Resident where Mobile = '{0}' """
+checkResidentNoQuary = """ select id Residentid, SuperId,Mobile,name,flatno,blockno,alloted4w,alloted2w from resident where Mobile = '{0}' """
 
 getVehiclesByResidentQuary = """SELECT Id vehicleid, ResidentId, TagNo, VehicleType, RegistrationNumber, VehicleImage
 FROM Vehicles WHERE ResidentId = {0} and isactive = 1"""
