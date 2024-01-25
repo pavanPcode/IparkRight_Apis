@@ -24,6 +24,7 @@ getVehiclesBysuperidQuary = """SELECT v.Id vehicleid, v.ResidentId, v.TagNo, v.V
 r.name residentname,r.mobile resmobile,t.name tenantname
 FROM Vehicles v 
 inner join resident r on r.id = v.ResidentId
+inner join tenant t on t.id = r.tenantid
 WHERE  v.isactive = 1 and r.superid = {0}"""
 
 registerVehicleQuary = """INSERT INTO Vehicles (ResidentId, TagNo, VehicleType, RegistrationNumber, VehicleImage)
