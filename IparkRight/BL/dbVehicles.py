@@ -25,6 +25,13 @@ class VehiclesBL:
         rows = runqry.queryall(exequery)
         return rows
 
+    def dbgetVehiclesBysuperid(self,superid):
+        exequery = query.getVehiclesBysuperidQuary.format(superid)
+        runqry = self.sqlhelper
+        rows = runqry.queryall(exequery)
+        return rows
+
+
     def dbgetVehicleTypes(self):
         exequery = query.getVehicleTypesQuary
         runqry = self.sqlhelper
