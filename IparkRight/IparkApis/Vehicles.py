@@ -36,7 +36,17 @@ def getVehiclesByResident():
     except Exception as e:
         response = ResponseModel(message=str(e), result_data=[], status=False)
         return jsonify(response.__dict__)
-
+        
+@appVehicle.route("/getVehiclesBysuperid")
+def getVehiclesBysuperid():
+    try:
+        superid = request.args.get('superid')
+        rcbl = dbVehicles.VehiclesBL()
+        retrows = rcbl.dbgetVehiclesBysuperid(superid)
+        return jsonify(retrows)
+    except Exception as e:
+        response = ResponseModel(message=str(e), result_data=[], status=False)
+        return jsonify(response.__dict__)
 
 @appVehicle.route("/registerVehicle",methods = ["POST"])
 def registerVehicle():
