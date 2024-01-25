@@ -19,6 +19,11 @@ checkResidentNoQuary = """ select id Residentid, SuperId,Mobile,name,flatno,bloc
 getVehiclesByResidentQuary = """SELECT Id vehicleid, ResidentId, TagNo, VehicleType, RegistrationNumber, VehicleImage
 FROM Vehicles WHERE ResidentId = {0} and isactive = 1"""
 
+getVehiclesBysuperidQuary = """SELECT v.Id vehicleid, v.ResidentId, v.TagNo, v.VehicleType, v.RegistrationNumber, v.VehicleImage,r.superid
+FROM Vehicles v 
+inner join resident r on r.id = v.ResidentId
+WHERE  v.isactive = 1 and r.superid = {0}"""
+
 registerVehicleQuary = """INSERT INTO Vehicles (ResidentId, TagNo, VehicleType, RegistrationNumber, VehicleImage)
 VALUES ({0}, '{1}', '{2}', '{3}', '{4}'); """
 
