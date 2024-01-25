@@ -4,3 +4,4 @@ configparser
 requests
 pandas
 Flask-Cors
+openpyxl

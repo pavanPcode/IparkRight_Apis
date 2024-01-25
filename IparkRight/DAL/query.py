@@ -38,7 +38,7 @@ where US.IsActive = 1 and RL.IsActive = 1 and Us.password = '{1}' and Us.Name = 
 
 ########################################################Resident############################
 
-createResidentQuary = """INSERT INTO `iparkright`.`resident`
+createResidentQuary = """INSERT INTO  `resident`
 (`SuperId`,`Name`,`Mobile`,`FlatNo`,`BlockNo`,`Alloted2W`,`Alloted4W`,`IsActive`,`CreatedOn`,`tenantid`)
 VALUES({0},'{1}','{2}','{3}','{4}','{5}','{6}',1,DATE_ADD(UTC_TIMESTAMP(), INTERVAL '5:30' HOUR_MINUTE),{7});"""
 
@@ -47,31 +47,31 @@ createBulkResidentQuary = """INSERT INTO `resident`
             VALUES(%s, %s, %s, %s, %s, %s , %s ,1, DATE_ADD(UTC_TIMESTAMP(), INTERVAL '5:30' HOUR_MINUTE), %s)
         """
 
-updateResidentQuary = """UPDATE `iparkright`.`resident`
+updateResidentQuary = """UPDATE  `resident`
 SET  `SuperId` = {0} , `Name` = '{1}' , `Mobile` = '{2}' , `FlatNo` =  '{3}', `BlockNo` =  '{4}', `Alloted2W` =  '{5}', 
 `Alloted4W` = '{6}' , `UpdatedOn` = DATE_ADD(UTC_TIMESTAMP(), INTERVAL '5:30' HOUR_MINUTE),`tenantid` = {8}   WHERE `Id` = {7} ;"""
 
 getresidentListquary = """SELECT r.`Id` residentid, r.`SuperId`,r. `Name`, r.`Mobile`, r.`FlatNo`,r.`BlockNo`, r.`Alloted2W`, r.`Alloted4W`,  r.`CreatedOn`,r.`tenantid`,
 DATE_FORMAT(r.`CreatedOn`, '%a, %d %b %Y') AS CreatedOndate,t.name tenantname
-FROM `iparkright`.`resident` as r
+FROM  `resident` as r
 left join tenant t on t.id = r.tenantid
 WHERE r.`SuperId` = {0} and r.`IsActive` = 1;
 """
 
 getresidentListbyTenantidquary = """SELECT r.`Id` residentid, r.`SuperId`,r. `Name`, r.`Mobile`, r.`FlatNo`,r.`BlockNo`, r.`Alloted2W`, r.`Alloted4W`,  r.`CreatedOn`,r.`tenantid`,
 DATE_FORMAT(r.`CreatedOn`, '%a, %d %b %Y') AS CreatedOndate,t.name tenantname
-FROM `iparkright`.`resident` as r
+FROM  `resident` as r
 left join tenant t on t.id = r.tenantid
 WHERE r.`Tenantid` = {0} and r.`IsActive` = 1;"""
 
 getresidentdetailsbyidquary = """SELECT r.`Id` residentid, r.`SuperId`,r. `Name`, r.`Mobile`, r.`FlatNo`,r.`BlockNo`, r.`Alloted2W`, r.`Alloted4W`,  r.`CreatedOn`,r.`tenantid`,
 DATE_FORMAT(r.`CreatedOn`, '%a, %d %b %Y') AS CreatedOndate,t.name tenantname
-FROM `iparkright`.`resident` as r
+FROM  `resident` as r
 left join tenant t on t.id = r.tenantid
 WHERE r.`Id` = {0};
 """
 
-deleteResidentQuary = """UPDATE `iparkright`.`resident`
+deleteResidentQuary = """UPDATE  `resident`
 SET  `IsActive` = 0    WHERE `Id` = {0} ;"""
 
 ########################################################################################################################

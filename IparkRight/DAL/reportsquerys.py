@@ -15,13 +15,13 @@ OverstayVehicleQuary = """ SELECT
     TIME_FORMAT(sw.InTime, '%H:%i') AS InTime,
     TIME_FORMAT(sw.OutTime, '%H:%i') AS OutTime
 FROM
-    iparkright.Tenant tnt
+     tenant tnt
 INNER JOIN
-    iparkright.Registrations Reg ON Reg.TenantId = tnt.Id
+     Registrations Reg ON Reg.TenantId = tnt.Id
 INNER JOIN
-    iparkright.VehicleTypes vt ON vt.Id = Reg.VehicleTypeId
+     VehicleTypes vt ON vt.Id = Reg.VehicleTypeId
 INNER JOIN
-    iparkright.SwipeTransactions sw ON sw.CardId = Reg.CardId AND sw.OutTime IS NULL
+     SwipeTransactions sw ON sw.CardId = Reg.CardId AND sw.OutTime IS NULL
 WHERE
     tnt.Name = tnt.Name;
 """
@@ -32,9 +32,9 @@ SlotAllotmentQuary = """SELECT
     tnt.Alloted2Wheelers AS `2WAlloted`,
     tnt.Alloted4Wheelers AS `4WAlloted`
 FROM
-    iparkright.Tenant tnt
+     Tenant tnt
 INNER JOIN
-    iparkright.Tenant reg ON reg.Id = tnt.Id;
+     Tenant reg ON reg.Id = tnt.Id;
 """
 
 VehicleINandOUtquary = """SELECT
@@ -47,13 +47,13 @@ VehicleINandOUtquary = """SELECT
     TIME_FORMAT(sw.InTime, '%H:%i') AS InTime,
     TIME_FORMAT(sw.OutTime, '%H:%i') AS OutTime
 FROM
-    iparkright.Tenant tnt
+     Tenant tnt
 INNER JOIN
-    iparkright.Registrations reg ON reg.TenantId = tnt.Id
+     Registrations reg ON reg.TenantId = tnt.Id
 INNER JOIN
-    iparkright.VehicleTypes vt ON vt.Id = reg.VehicleTypeId
+     VehicleTypes vt ON vt.Id = reg.VehicleTypeId
 INNER JOIN
-    iparkright.SwipeTransactions sw ON sw.CardId = reg.CardId;
+     SwipeTransactions sw ON sw.CardId = reg.CardId;
 """
 
 TagInventoryReportquary = """SELECT
@@ -68,4 +68,4 @@ TagInventoryReportquary = """SELECT
         ELSE '4 Wheeler'
     END AS `Vehicle Type`
 FROM
-    iparkright.CardInventorytags REG; """
+     CardInventorytags REG; """
