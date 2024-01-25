@@ -18,5 +18,6 @@ app.register_blueprint(Reports.appReports)
 app.register_blueprint(Residents.appResidents)
 
 
+
 if __name__ == "__main__":
     app.run()
